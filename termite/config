@@ -72,8 +72,3 @@ color18 = #282828
 color19 = #383838
 color20 = #b8b8b8
 color21 = #e8e8e8
-
-[options]
-allow_bold = true
-dynamic_title = true
-cursor_blink = system
