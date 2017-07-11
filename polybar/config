@@ -1,0 +1,370 @@
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+
+[colors]
+white = #d1d1d1
+gray = #585858
+black = #090909
+red = #e82b09
+blue = #95aec7
+yellow = #c7ae95
+green = #aec795
+
+
+[bar/Bar]
+bottom = false 
+override-redirect = false
+width = 100%
+height = 27
+
+enable-ipc = true
+locale = en_US.UTF-8
+padding-left = 0
+padding-right = 2
+
+module-margin-right = 1
+module-margin-left = 0
+
+modules-right = wlan eth temperature cpu memory backlight volume filesystem battery date menu0
+modules-center = 
+modules-left =  i3 title 
+
+background = #282828
+foreground = #ebdbb2
+
+underline-size = 2
+underline-color = #282828
+
+tray-position = right
+tray-padding = 2
+tray-background = #282828
+tray-transparent = false
+
+font-0 = terminus:size=8;0
+font-1 = FontAwesome:size=10;0
+font-2 = TakaoGothic:weight=bold:size=10;0
+font-3 = FontAwesome:size=8;0
+
+
+[module/title]
+type = internal/xwindow
+label = %title%
+label-maxlen = 60
+
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+;mount-1 = /home
+;mount-2 = /invalid/mountpoint
+
+label-mounted =  %free%
+label-mounted-underline = 
+label-mounted-padding = 1
+
+label-unmounted =
+label-unmounted-foreground = ${colors.black}
+
+[module/i3]
+type = internal/i3
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+
+
+format = <label-state> <label-mode>
+
+strip-wsnumbers = true
+index-sort = true
+
+label-mode = %mode% 
+label-mode-padding = 0
+label-mode-background = #e60053
+
+label-focused = %name% %icon%
+label-focused-foreground = #282828
+label-focused-background = #00ffffff
+label-focused-underline = #00ffffff
+label-focused-padding = 3
+
+label-unfocused = %name% %icon%
+label-unfocused-padding = 3
+
+label-visible = %name% %icon%
+label-visible-underline = #555555
+label-visible-padding = 3
+
+label-urgent = %name% %icon%
+label-urgent-foreground = #000000
+label-urgent-background = #bd2c40
+label-urgent-padding = 3
+
+
+[module/backlight]
+type = internal/xbacklight
+card = intel_backlight
+format = <label>  
+label =  %percentage%
+label-padding = 2
+padding = 5
+interval = 1
+
+bar-width = 15
+bar-indicator = |
+bar-indicator-foreground = #ff
+bar-indicator-font = 2
+bar-fill = 
+bar-fill-font = 2
+bar-fill-foreground = #F8ED1F
+bar-empty = 
+bar-empty-font = 2
+bar-empty-foreground = #ebdbb2
+
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+label = %{F${colors.white}  %percentage% %{F-}
+label-underline = 
+padding= 2
+
+format-label = internal/cpu
+
+format = <label> <bar-load>
+
+
+format-background = #282828
+format-foreground =
+format-underline = #55
+format-padding = 2
+;
+
+
+bar-load-width = 5
+bar-load-foreground-0 = #aaff77
+bar-load-foreground-1 = #aaff77
+bar-load-foreground-2 = #fba922
+bar-load-foreground-3 = #ff5555
+bar-load-indicator = 
+bar-load-indicator-font = 4
+bar-load-indicator-foreground = #ffffff
+bar-load-fill = \\
+bar-load-fill-font = 4
+bar-load-empty = \\
+bar-load-empty-font = 4
+
+
+
+[module/memory]
+type = internal/memory
+interval = 2
+
+
+format = <label> <bar-used>
+format-background = #282828
+format-foreground =
+format-underline = #55
+format-padding = 2
+
+label =  %percentage_used%
+label-underline = #55
+label-foreground =
+
+
+bar-used-width = 10
+bar-used-foreground-0 = #aaff77
+bar-used-foreground-1 = #aaff77
+bar-used-foreground-2 = #fba922
+bar-used-foreground-3 = #ff5555
+bar-used-indicator = 
+bar-used-indicator-font = 4
+bar-used-indicator-foreground = #ffffff
+bar-used-fill = \\
+bar-used-fill-font = 4
+bar-used-empty = \\
+bar-used-empty-font = 4
+bar-used-empty-foreground = #ebdbb2
+
+
+
+[module/wlan]
+type = internal/network
+interface = wlp2s0
+interval = 1.0
+
+format-connected-padding = 1
+format-disconnected-padding = 1
+
+format-connected = <label-connected>
+format-connected-foreground = #ebdbb2
+format-disconnected-underline = #fb4934
+
+label-connected = (%signal%) %essid%   %downspeed%  %upspeed% 
+label-disconnected = Disconnected 
+label-disconnected-foreground = ${colors.white}
+
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+
+[module/eth]
+type = internal/network
+interface = enp1s0
+interval = 3.0
+
+format-connected-padding = 1
+format-disconnected-padding = 1
+
+format-connected-underline = ${colors.white}
+format-disconnected-underline = ${colors.gray}
+
+label-connected =   %downspeed%  %upspeed% 
+label-disconnected = 
+label-disconnected-foreground = ${colors.gray}
+
+
+[module/date]
+type = internal/date
+date-alt =   %A %H:%M
+date =   %b/%d/%y %I:%M %p
+interval = 5
+format-underline = 
+;format-background =
+format-foreground =
+format-padding = 1
+
+
+[module/volume]
+type = internal/volume
+interval = 1
+format-volume =     <bar-volume>
+padding = 3
+label-volume = VOL
+label-volume-foreground = ${root.foreground}
+label-muted =   sound muted
+label-muted-foreground = ${colors.gray}
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #aaff77
+bar-volume-foreground-1 = #aaff77
+bar-volume-foreground-2 = #aaff77
+bar-volume-foreground-3 = #aaff77
+bar-volume-foreground-4 = #aaff77
+bar-volume-foreground-5 = #aaff77
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-indicator-foreground = ${colors.white}
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.gray}
+;─
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP0
+full-at = 99
+
+time-format = %H:%M
+
+
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = 
+format-charging-padding = 1
+
+label-discharging = %percentage% %time% 
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = 
+format-discharging-padding = 1
+
+format-full =    <label-full>
+format-full-underline = ${self.format-charging-underline}
+format-full-overline = ${self.format-charging-underline}
+format-full-padding = 1
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-0-foreground = #fb4934
+ramp-capacity-1-foreground = #fb4934
+ramp-capacity-2-foreground = #F8ED1F
+ramp-capacity-3-foreground = #689d6a
+ramp-capacity-4-foreground = #689d6a
+
+
+animation-charging-0 =  
+animation-charging-1 =  
+animation-charging-2 =  
+animation-charging-3 =  
+animation-charging-4 =  
+animation-charging-foreground = #aaff77
+animation-charging-framerate = 750ff
+
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 1
+warn-temperature = 68
+
+
+label = %temperature%
+label-warn =  %temperature%
+
+
+format = <ramp> <label>
+format-underline = 
+format-warn = <label-warn>
+format-warn-underline = #fb4934
+
+format-padding = 1
+format-warn-padidng = 1
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground =
+
+
+[module/menu0]
+type = custom/menu
+
+format = <label-toggle> <menu>
+format-underline = 
+format-padding = 1
+
+menu-0-0 =  shutdown
+menu-0-0-exec = shutdown now
+menu-0-1 =  restart
+menu-0-1-exec = shutdown -r now
+menu-0-2 =   cancel
+
+
+label-open =  
+label-close =
+
+[module/updates]
+type = custom/script
+
+exec = echo
+
+
