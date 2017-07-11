@@ -24,8 +24,6 @@ word_chars = -A-Za-z0-9,./?%&#:_=+@~
 highlight 	= #2f2f2f
 
 [colors]
-# Base16 Default Dark
-# Author: Chris Kempson (http://chriskempson.com)
 
 foreground      = #d8d8d8
 foreground_bold = #e8e8e8
@@ -72,3 +70,4 @@ color18 = #282828
 color19 = #383838
 color20 = #b8b8b8
 color21 = #e8e8e8
+
